@@ -13,13 +13,14 @@
 
 import React from 'react';
 const useMeetingListItem = (props) => {
+  const newFunction = () => {};
   const [items, setItems] = useState([1, 2, 3, 5, 6, 7]);
 
   const onClick = () => {};
 
   const data = { items, items };
 
-  const fns = { onClick };
+  const fns = { onClick ,newFunction};
 
   return { data, fns };
 };
