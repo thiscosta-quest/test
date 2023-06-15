@@ -17,24 +17,24 @@ import { styled } from '@mui/material/styles';
 import useMeetingListItem from 'src/components/MeetingListItem/useMeetingListItem';
 
 const AlertFalseHoverTrueS = styled('div', {
-  shouldForwardProp: (prop) => !['data', 'props'].includes(prop.toString()),
-})(({ theme, data, props }) => ({
-  backgroundColor: data.isSelected
-    ? theme.palette['Primary']['Shades']['12p']
-    : props.isHover
-    ? theme.palette['Error']['Shades']['12p']
-    : theme.palette['Primary']['Contrast'],
+  shouldForwardProp: (prop) => !['props', 'data'].includes(prop.toString()),
+})(({ theme, props, data }) => ({
   boxShadow: `inset 0px -1px 0px rgba(172, 172, 172, 1)`,
   display: `flex`,
   position: `relative`,
   isolation: `isolate`,
   flexDirection: `column`,
-  width: '100%',
+  width: `251px`,
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
   padding: `12px`,
   boxSizing: `border-box`,
-  height: 'auto',
+  height: `62px`,
+  backgroundColor: data.isSelected
+    ? theme.palette['Primary']['Shades']['12p']
+    : props.isHover
+    ? theme.palette['Error']['Shades']['12p']
+    : theme.palette['Primary']['Contrast'],
 }));
 
 const Frame1 = styled('div')({
@@ -89,7 +89,7 @@ function MeetingListItem(props) {
   const { data, fns } = useMeetingListItem(props);
 
   return (
-    <AlertFalseHoverTrueS className={props.className} data={data} props={props}>
+    <AlertFalseHoverTrueS className={props.className} props={props} data={data}>
       <Frame1>
         {data.items &&
           data.items.map((item, index) => {
